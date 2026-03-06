@@ -56,9 +56,9 @@ export default function Contact() {
           viewport={{ once: true }}
           className="flex flex-col justify-center"
         >
-          <h3 className="text-5xl font-bold tracking-tight text-white mb-6">Let's Connect</h3>
+          <h3 className="text-5xl font-bold tracking-tight text-white mb-6">Let&apos;s Connect</h3>
           <p className="text-white/60 text-lg mb-12 font-light leading-relaxed">
-            Have a project in mind, a question about my work, or just want to say hi? Feel free to reach out. I'm always open to discussing new opportunities and exploring what we can build together.
+            Have a project in mind, a question about my work, or just want to say hi? Feel free to reach out. I&apos;m always open to discussing new opportunities and exploring what we can build together.
           </p>
 
           <div className="flex flex-col gap-4">

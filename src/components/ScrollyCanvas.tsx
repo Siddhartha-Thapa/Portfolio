@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
-import { useScroll, useTransform, useMotionValueEvent, motion } from "framer-motion";
+import { useRef, useEffect, useState, useCallback } from "react";
+import { useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import Overlay from "./Overlay";
 
 const FRAME_COUNT = 120; // 000 to 119
@@ -46,7 +46,7 @@ export default function ScrollyCanvas() {
     }
   });
 
-  const renderFrame = (index: number) => {
+  const renderFrame = useCallback((index: number) => {
     if (!canvasRef.current || images.length === 0) return;
     const ctx = canvasRef.current.getContext("2d");
     if (!ctx) return;
@@ -77,7 +77,7 @@ export default function ScrollyCanvas() {
       img.width * ratio,
       img.height * ratio
     );
-  };
+  }, [images]);
 
   useEffect(() => {
     if (images.length === FRAME_COUNT) {
@@ -92,7 +92,7 @@ export default function ScrollyCanvas() {
     
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [images]);
+  }, [images, renderFrame, frameIndex]);
 
   return (
     <div ref={containerRef} className="relative h-[500vh] bg-[#121212]">
